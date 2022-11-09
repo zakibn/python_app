@@ -1,0 +1,32 @@
+from pyautogui import *
+import pyautogui
+import time
+import keyboard
+import random
+import win32api
+import win32con
+
+
+def click(x, y):
+    """ ضع مؤشر الماوس على الموضع  """
+    win32api.SetCursorPos((x, y))
+    """   حركة المؤشر على الاسفل تساوي 0 """
+    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
+    time.sleep(0.01)
+    """ حركة المؤشر على الاعلى تساوي 0 """
+    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
+
+
+""" مادام المؤشر يضغط على الاوضاع الصحيحة لا تخرج ولا تضغط على زر الايقاف """
+while keyboard.is_pressed('q') == False:
+    """ لو وصل الاسود الى الموضع 400 و 581 من الشاشة و 0  يساوي  0 معناه الاسود """
+    if pyautogui.pixel(581, 400)[0] == 0:
+        """ اضغط الموضع 581 و 400 """
+        """ هذا بالنسبة للعمود الاول """
+        click(581, 400)
+    if pyautogui.pixel(684, 400)[0] == 0:
+        click(684, 400)
+    if pyautogui.pixel(770, 400)[0] == 0:
+        click(770, 400)
+    if pyautogui.pixel(868, 400)[0] == 0:
+        click(868, 400)
